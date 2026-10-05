@@ -100,15 +100,20 @@ footer{background:#161412;color:#b3a999;padding:70px 0;font-size:13px}footer h2{
 .mv{display:flex;gap:6px;margin:16px 0}.mv button{background:none;border:1px solid var(--line);color:var(--ink);padding:9px 16px;font:600 10px var(--sans);letter-spacing:.16em;text-transform:uppercase;cursor:pointer}.mv button.on{background:var(--ink);color:var(--bg)}
 .rs{display:grid;gap:14px;margin:40px 0}@media(min-width:800px){.rs{grid-template-columns:1fr 2fr 1fr}}.rs>div{border:1px solid var(--line);padding:22px;background:var(--sand)}.rs em{font:600 11px var(--sans);letter-spacing:.2em;font-style:normal;color:var(--terra)}.rs p{margin:8px 0 0;line-height:2}
 .ko{display:grid;gap:14px;margin-top:20px}@media(min-width:800px){.ko{grid-template-columns:repeat(3,1fr)}}.ko div{border-top:2px solid var(--terra);padding:18px 0}.ko b{font:500 30px var(--serif);display:block}.ko em{font:600 10px var(--sans);letter-spacing:.2em;font-style:normal;color:var(--gold)}.ko p{font-size:14px;color:var(--mut);margin:6px 0}
+.hst{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:1px;margin-top:26px;max-width:640px;background:rgba(255,255,255,.25)}
+.hst div{background:rgba(15,10,8,.45);backdrop-filter:blur(10px);padding:12px;text-align:center}.hst b{display:block;font:500 26px var(--serif)}.hst span{font:600 9px var(--sans);letter-spacing:.16em;text-transform:uppercase}
+.wx{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-top:30px}.wx>div{border:1px solid var(--line);padding:22px;background:var(--bg)}.wx b{font:500 24px var(--serif)}.wx .t{font:500 46px var(--serif);color:var(--terra);line-height:1.1}.wx small{color:var(--mut)}
+.bg{display:grid;gap:40px;margin-top:30px}@media(min-width:900px){.bg{grid-template-columns:1fr 1fr}}.bl{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:10px 0}
+@media print{nav.n,.cta,.sc,#mm,.nb,.bt{display:none!important}.rv{opacity:1!important;transform:none!important}section{padding:30px 0}}
 </style></head><body>
 <nav class="n" id="nv"><a class="lg" href="#top" aria-label="KADİM Roadbook">KADİM<small>ROADBOOK</small></a>
 <div class="ml"><a href="#journey">Journey</a><a href="#route">Route</a><a href="#mardin">Mardin</a><a href="#midyat">Midyat</a><a href="#diyarbakir">Diyarbakır</a><a href="#stay">Stay</a><a href="#food">Food</a><a href="#shop">Shop</a></div>
 <div class="rt"><button class="nb" id="th" aria-label="Tema değiştir">DARK</button><button class="nb" id="mb" aria-label="Menü">MENU</button></div></nav>
-<div id="mm" role="dialog" aria-label="Menü"><a href="#journey">Journey</a><a href="#itinerary">Itinerary</a><a href="#mardin">Mardin</a><a href="#midyat">Midyat</a><a href="#diyarbakir">Diyarbakır</a><a href="#stay">Stay</a><a href="#food">Food</a><a href="#shop">Shop</a><a href="#cost">Trip Cost</a></div>
+<div id="mm" role="dialog" aria-label="Menü"><a href="#journey">Journey</a><a href="#itinerary">Itinerary</a><a href="#mardin">Mardin</a><a href="#midyat">Midyat</a><a href="#diyarbakir">Diyarbakır</a><a href="#stay">Stay</a><a href="#food">Food</a><a href="#shop">Shop</a><a href="#cost">Trip Cost</a><a href="#weather">Weather</a><a href="#budget">Budget</a></div>
 
 <header class="hero" id="top"><figure class="ph" data-q="Mardin panorama" data-w="1800" role="img" aria-label="Mardin tarihi taş evleri ve Mezopotamya Ovası manzarası" id="hp"></figure>
 <div class="wrap"><div class="k">Bu yolculuğun kalbi Mardin · Erzurum → Mardin → Midyat → Diyarbakır</div><h1>Taşın, tarihin ve <i>Mezopotamya'nın</i> izinde</h1>
-<p>10 kişi • 3 araç • 4 çocuk • 1 unutulmaz Güneydoğu yolculuğu</p><div class="cta"><a class="bt f" href="#itinerary">Seyahate başla</a><a class="bt" href="#journey">Rota'yı keşfet</a><a class="bt" href="#mmap">Mardin keşif rotası</a></div></div><div class="sc">SCROLL TO EXPLORE ↓</div></header>
+<p>10 kişi • 3 araç • 4 çocuk • 1 unutulmaz Güneydoğu yolculuğu</p><div class="hst"><div><b>10</b><span>Kişi</span></div><div><b>3</b><span>Araç</span></div><div><b>5</b><span>Gün</span></div><div><b>~1900</b><span>Km</span></div></div><div class="cta"><a class="bt f" href="#itinerary">Seyahate başla</a><a class="bt" href="#journey">Rota'yı keşfet</a><a class="bt" href="#mmap">Mardin keşif rotası</a></div></div><div class="sc">SCROLL TO EXPLORE ↓</div></header>
 
 <main>
 <section id="journey"><div class="wrap"><div class="k">The Journey</div><h2>Bir rota, <i>beş durak</i></h2>
@@ -172,6 +177,20 @@ footer{background:#161412;color:#b3a999;padding:70px 0;font-size:13px}footer h2{
 <div class="res" id="fres"></div><small id="fdet"></small></div>
 <div><label class="f" for="st">Çıkış saati</label><input id="st" type="time" value="18:00"><label class="f" for="dk">Mesafe km</label><input id="dk" type="number" value="650"><label class="f" for="sp2">Ortalama hız km/s</label><input id="sp2" type="number" value="80"><label class="f" for="br">Toplam mola dk</label><input id="br" type="number" value="90"><div class="res" id="tres"></div><small>Tahmini varış; kesin navigasyon sonucu değildir.</small></div></div></div></section>
 
+<section id="weather"><div class="wrap"><div class="k">Live Weather</div><h2>Rotadaki <i>hava</i></h2><p class="lead">Çıkıştan önce kontrol edin; veriler anlık çekilir.</p><div class="wx" id="wx"></div></div></section>
+
+<section id="budget" class="sh"><div class="wrap"><div class="k">Total Budget</div><h2>Toplam <i>bütçe</i></h2>
+<div class="bg"><div>
+<label class="f" for="bp">Kişi sayısı</label><input id="bp" type="number" value="10">
+<label class="f" for="bd">Gün sayısı</label><input id="bd" type="number" value="5">
+<label class="f" for="bo">Oda sayısı</label><input id="bo" type="number" value="5">
+<label class="f" for="bn">Gecelik oda ücreti ₺ (ortalama)</label><input id="bn" type="number" value="2500">
+<label class="f" for="bf">Kişi başı günlük yemek ₺</label><input id="bf" type="number" value="700">
+<label class="f" for="bm">Kişi başı müze/giriş ₺</label><input id="bm" type="number" value="150">
+<label class="f" for="bk">Otopark ve diğer (toplam) ₺</label><input id="bk" type="number" value="800"></div>
+<div id="bout"></div></div>
+<p class="sm">Yakıt, yukarıdaki "Yolun hesabı" bölümünden otomatik gelir. Tüm değerler tahminidir.</p></div></section>
+
 <section id="ready" class="sh"><div class="wrap"><div class="k">Ready for Departure</div><div class="rg"><div class="ring" id="rg"><span id="pt">0%</span></div><h2 style="margin:0">Hazır mısınız?</h2></div>
 <div class="row" style="gap:40px"><div><h3>Valiz</h3><div class="ck" id="l1"></div></div><div><h3>Seyahatten önce</h3><div class="ck" id="l2"></div></div></div></div></section>
 </main>
@@ -180,7 +199,7 @@ footer{background:#161412;color:#b3a999;padding:70px 0;font-size:13px}footer h2{
 <p><b>Fotoğraflar:</b> Sayfa açıldığında Wikimedia Commons'tan (commons.wikimedia.org) canlı çekilir; her görselde sanatçı ve lisans bilgisi ile dosya sayfası bağlantısı görünür. İnternet yoksa veya sonuç gelmezse sahte görsel gösterilmez, Commons arama bağlantısı sunulur. Görsellerin konuya uygunluğunu kontrol edin; lightbox'ta kaynak sayfasını açabilirsiniz.</p>
 <p><b>Haritalar:</b> Google Maps bağlantıları. <b>Resmî kaynaklar:</b> Kültür ve Turizm Bakanlığı müze/ören yeri sayfaları, KGM yol durumu — çalışma saatleri ve ücretler için kontrol edin.</p>
 <p><b>Travel information should be verified before departure.</b> Mesafe, süre, fiyat, saat ve işletme bilgileri yaklaşıktır.</p>
-<p>Kullanım: dosyayı <b>travel.html</b> olarak kaydedip tarayıcıda açın; fotoğraflar için internet gerekir.</p></div></footer>
+<p>Kullanım: dosyayı <b>travel.html</b> olarak kaydedip tarayıcıda açın; fotoğraflar için internet gerekir.</p><p style="margin-top:20px"><button class="bt" onclick="print()">PDF / Yazdır</button> <button class="bt" onclick="open('https://wa.me/?text='+encodeURIComponent('Mardin gezi planı: '+location.href))">WhatsApp'ta paylaş</button></p></div></footer>
 
 <div id="lb" role="dialog" aria-modal="true" aria-label="Fotoğraf"><button aria-label="Kapat" id="lc">×</button><img alt=""><p id="lt"></p></div>
 
@@ -216,6 +235,7 @@ const P={mardin:[
 ['Dara Antik Kenti','Dara ancient city Mardin','Doğu Roma (Bizans) döneminde 6. yüzyılın başında kurulan sınır kentidir; sarnıçlar, mezar alanı ve kalıntılarıyla öne çıkar. Açık, gölgesiz bir alan olduğundan su, şapka ve mola planlayın.','Yarım gün (≈2–3 sa)',2,'Araçla; saha park alanı','📍 Mardin merkez dışı — araçla ulaşım (merkezden yaklaşık 30 km*)','Sabah erken veya öğleden sonra',1,'antik',37.1777,40.9488,'Mardin merkez dışında ayrı bir araç rotası: Bizans dönemi antik kent.','Dara Antik Kenti Mardin']],
 midyat:[['Eski Midyat','Midyat old town','Taş konaklar ve sokak dokusu.','2–3 sa',1,'Merkez otopark + yürüyüş','Midyat Eski Şehir'],['Taş Konaklar','Midyat mansion stone','Taş işçiliğiyle öne çıkan yapılar.','60 dk',1,'Yürüyüş','Midyat taş konaklar'],['Telkari Çarşısı','Midyat telkari filigree','Telkari atölyeleri ve hediyelikler.','60 dk',0,'Yürüyüş','Midyat Telkari Çarşısı'],['Mor Gabriel Manastırı','Mor Gabriel Monastery','Çok eski bir Süryani manastırı; ziyaret saatini kontrol edin.','60–90 dk',1,'Araçla; manastır park','Mor Gabriel Manastırı']],
 diyar:[['Diyarbakır Surları','Diyarbakır city walls','Dağkapı ve Mardinkapı çevresiyle UNESCO alanı.','90 dk',1,'Seçili noktada park','Diyarbakır Surları'],['Ulu Cami','Great Mosque of Diyarbakır','Anadolu\'nun en eski büyük camilerinden.','45 dk',0,'Yürüyüş','Diyarbakır Ulu Camii'],['Hasan Paşa Hanı','Hasan Pasha Khan Diyarbakır','Tarihî han; kahve ve çay molası.','60 dk',0,'Yürüyüş','Hasan Paşa Hanı Diyarbakır'],['On Gözlü Köprü','Ten-Eyed Bridge Diyarbakır','Dicle üzerinde tarihî köprü.','45 dk',0,'Araç','On Gözlü Köprü Diyarbakır'],['Hevsel Bahçeleri','Hevsel Gardens Diyarbakır','Dicle kıyısında yeşil alan; çocuklarla serbest vakit.','60 dk',0,'Araç','Hevsel Bahçeleri Diyarbakır']]};
+P.mardin.forEach(r=>r.splice(6,0,r[r.length-1]));
 const card=(p,i)=>{const n=p.length>12?i+1:0;return `<article class="pc rv"${n?` id="m${n}"`:''}><div class="pw">${n?`<span class="nb2">${n}</span>`:''}<figure class="ph r45" data-q="${p[1]}" data-w="900" role="img" aria-label="${esc(p[0])}"></figure><a class="ov" target="_blank" rel="noopener" href="${mp(p[6])}"><b>${p[0]}</b><span>KEŞFET →</span></a></div><div class="pb"><h3>${p[0]}</h3><p>${p[2]}</p>${p[7]&&p[7][0]=='📍'?`<span class="far">${p[7].split(' (')[0]}</span><p class="sm">${p[7].split('(')[1].replace(')','')}</p>`:p[7]?`<p class="sm">📍 ${p[7]}</p>`:''}${p[8]?`<p class="sm">Önerilen zaman: ${p[8]}</p>`:''}${p[9]?`<p class="sm ck">Ziyaret saati ve giriş koşulu güncel olarak kontrol edilmeli.</p>`:''}<div class="mt"><span>Süre ${p[3]}</span><span class="${K[p[4]]}">● ${KL[p[4]]}</span><span>Park: ${p[5]}</span></div><a class="ln" target="_blank" rel="noopener" href="${mp(p[6])}">📍 Haritada aç</a><a class="ln" target="_blank" rel="noopener" href="${dr(p[6])}">🚗 Yol tarifi</a></div></article>`};
 $('#g-mardin').innerHTML=P.mardin.map(card).join('');$('#g-midyat').innerHTML=P.midyat.map(card).join('');$('#g-diyar').innerHTML=P.diyar.map(card).join('');
 // Photo essay + lightbox
@@ -246,7 +266,7 @@ $('#fd').innerHTML=F.map(f=>`<article class="pc rv"><figure class="ph r11" data-
 const SP=[['TELKARİ','Midyat\'ın imzası: ince gümüş işçiliği.',1],['MARDİN SABUNU','Zeytin/Antep fıstığı yağlı doğal sabunlar.'],['BAHARAT','Çarşılarda tartılı, taze öğütülmüş.'],['MIRRA','Paketlenmiş yöresel kahve.'],['BADEM ŞEKERİ','Mardin tatlı geleneği.'],['BAKIR','El işçiliği ürünler.'],['YÖRESEL ÜRÜNLER','Gıda ve tekstil, Diyarbakır dahil.']];
 $('#sp').innerHTML=SP.map(s=>`<div class="${s[2]?'big':''} rv"><b>${s[0]}</b><p>${s[1]}</p></div>`).join('');
 // Calculators
-function fuel(){const km=+$('#km').value,lp=+$('#lp').value;let t=0,l=0;[1,2,3].forEach(i=>{if($('#u'+i).checked){const x=km/100*(+$('#c'+i).value);l+=x;t+=x*lp}});$('#fres').textContent=t.toLocaleString('tr-TR',{maximumFractionDigits:0})+' ₺';$('#fdet').textContent='≈'+l.toFixed(0)+' litre · tahmini, tüketim koşullara göre değişir.'}
+function fuel(){const km=+$('#km').value,lp=+$('#lp').value;let t=0,l=0;[1,2,3].forEach(i=>{if($('#u'+i).checked){const x=km/100*(+$('#c'+i).value);l+=x;t+=x*lp}});$('#fres').textContent=t.toLocaleString('tr-TR',{maximumFractionDigits:0})+' ₺';$('#fdet').textContent='≈'+l.toFixed(0)+' litre · tahmini, tüketim koşullara göre değişir.';window.FT=t;if(window.bud)bud()}
 function eta(){const [h,m]=($('#st').value||'18:00').split(':').map(Number),mi=+$('#dk').value/+$('#sp2').value*60+ +$('#br').value;let t=h*60+m+mi;const d=Math.floor(t/1440);t%=1440;$('#tres').textContent=String(Math.floor(t/60)).padStart(2,'0')+':'+String(Math.round(t%60)%60).padStart(2,'0')+(d?' (+'+d+')':'')}
 $$('#cost input').forEach(i=>i.addEventListener('input',()=>{fuel();eta()}));fuel();eta();
 // Checklist
@@ -263,7 +283,7 @@ addEventListener('scroll',sc,{passive:true});sc();
 
 const MC={tarih:'#5b1a26',dini:'#a9502f',carsi:'#8d7440',seyir:'#4a5a45',antik:'#1d1b19'},HOME=[37.313,40.735];let mapo=null;
 function initMap(){const box=$('#map');if(!window.L){box.innerHTML='<p>Harita yüklenemedi (internet gerekir). Kartlardaki “Haritada aç” ve “Yol tarifi” bağlantılarını kullanabilirsiniz.</p>';return}
-try{const m=L.map('map',{scrollWheelZoom:false}).setView([37.311,40.741],14);L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18,attribution:'© OpenStreetMap contributors'}).addTo(m);
+try{const m=L.map('map',{scrollWheelZoom:false}).setView([37.311,40.741],14);L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',{subdomains:'abcd',maxZoom:19,attribution:'© OpenStreetMap © CARTO'}).addTo(m);
 const pt=n=>[P.mardin[n-1][11],P.mardin[n-1][12]];
 L.polyline([HOME,pt(5),pt(4)],{color:'#5b1a26',weight:3}).addTo(m);L.polyline([pt(4),pt(7),pt(3),pt(8),pt(9),pt(6),pt(1),pt(2)],{color:'#a9502f',weight:3,dashArray:'6 8'}).addTo(m);L.polyline([HOME,pt(10)],{color:'#8d7440',weight:3,dashArray:'2 8'}).addTo(m);
 L.marker(HOME,{icon:L.divIcon({className:'mkw',html:'<b class="mk" style="background:#6a6258">G</b>',iconSize:[28,28],iconAnchor:[14,14]})}).addTo(m).bindPopup('<b>Mardin giriş / konaklama</b><br>Yaklaşık merkez konumu.');
@@ -273,4 +293,11 @@ $('#mv').onclick=e=>{const v=e.target.dataset.v;if(!v)return;$$('#mv button').fo
 m.fitBounds(cb,{padding:[30,30]});setTimeout(()=>m.invalidateSize(),300)}catch(e){box.innerHTML='<p>Harita başlatılamadı. Kartlardaki harita bağlantılarını kullanın.</p>'}}
 const mio=new IntersectionObserver(es=>{if(!es[0].isIntersecting)return;mio.disconnect();const l=document.createElement('link');l.rel='stylesheet';l.href='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css';document.head.append(l);const sc=document.createElement('script');sc.src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js';sc.onload=initMap;sc.onerror=initMap;document.head.append(sc)},{rootMargin:'300px'});mio.observe($('#map'));
 watch('body');
+function bud(){const g=i=>+$('#'+i).value||0,p=g('bp'),d=g('bd'),n=Math.max(d-1,1);
+const L=[['Yakıt',window.FT||0],['Konaklama',g('bo')*g('bn')*n],['Yemek',g('bf')*p*d],['Müze / giriş',g('bm')*p],['Otopark ve diğer',g('bk')]];
+const t=L.reduce((a,x)=>a+x[1],0),f=v=>Math.round(v).toLocaleString('tr-TR')+' ₺';
+$('#bout').innerHTML=L.map(x=>`<div class="bl"><span>${x[0]}</span><b>${f(x[1])}</b></div>`).join('')+`<div class="res">${f(t)}</div><small>Kişi başı ≈ ${f(t/(p||1))}</small>`}
+$$('#budget input').forEach(i=>i.addEventListener('input',bud));fuel();bud();
+[['Mardin',37.31,40.74],['Midyat',37.42,41.37],['Diyarbakır',37.91,40.24],['Erzurum',39.9,41.27]].forEach(([n,la,lo])=>{const c=document.createElement('div');c.innerHTML='<b>'+n+'</b><br><small>Yükleniyor…</small>';$('#wx').append(c);
+fetch('https://api.open-meteo.com/v1/forecast?latitude='+la+'&longitude='+lo+'&current=temperature_2m,wind_speed_10m&daily=temperature_2m_max,temperature_2m_min&timezone=auto&forecast_days=1').then(r=>r.json()).then(d=>{c.innerHTML='<b>'+n+'</b><div class="t">'+Math.round(d.current.temperature_2m)+'°C</div><small>Bugün '+Math.round(d.daily.temperature_2m_min[0])+'° / '+Math.round(d.daily.temperature_2m_max[0])+'° · rüzgâr '+Math.round(d.current.wind_speed_10m)+' km/s</small>'}).catch(()=>{c.innerHTML='<b>'+n+'</b><br><small>Veri alınamadı (internet gerekir)</small>'})});
 </script></body></html>
