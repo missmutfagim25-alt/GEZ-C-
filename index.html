@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>KADİM Roadbook | Erzurum'dan Mardin, Dara, Midyat ve Diyarbakır'a</title>
+<meta name="description" content="Erzurum çıkışlı, çocuklu aile için Mardin, Dara, Midyat ve Diyarbakır dijital roadbook.">
+<meta property="og:title" content="KADİM Roadbook"><meta property="og:description" content="Erzurum'dan Mezopotamya'ya aile yolculuğu.">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="index.html">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Manrope:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* TOKENS */
+:root{--bg:#f4efe6;--card:#fbf8f2;--ink:#231a1b;--mute:#675c57;--wine:#5a1f2b;--terra:#8c4a3a;--gold:#a88a4e;--line:#ddd2bf;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1e1819;--card:#2a2123;--ink:#efe6d6;--mute:#b5a89a;--wine:#d3969c;--terra:#cf9078;--gold:#c9a96a;--line:#41343a}}
+:root[data-theme="dark"]{--bg:#1e1819;--card:#2a2123;--ink:#efe6d6;--mute:#b5a89a;--wine:#d3969c;--terra:#cf9078;--gold:#c9a96a;--line:#41343a}
+/* BASE */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(60px + env(safe-area-inset-top,0px));-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Manrope,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;line-height:1.1;margin:0 0 .5rem}
+h2{font-size:2rem;color:var(--wine)}h3{font-size:1.3rem}
+section{max-width:960px;margin:0 auto;padding:2.5rem 1rem}
+p{margin:.4rem 0}a{color:var(--wine)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.kc{display:inline-block;border:1px dashed var(--gold);color:var(--mute);font-size:.72rem;padding:0 .4rem;border-radius:4px;margin-left:.25rem;white-space:nowrap}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:1rem}
+.mute{color:var(--mute)}
+button,.btn{min-height:44px;font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+#prog{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:left;background:var(--gold);z-index:30;will-change:transform;pointer-events:none}
+/* NAV */
+nav{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line);display:flex;align-items:center;padding-top:env(safe-area-inset-top,0px)}
+#links{display:flex;overflow-x:auto;flex:1;scrollbar-width:none;overscroll-behavior-x:contain}
+#links::-webkit-scrollbar{display:none}
+#links a{padding:.7rem .8rem;text-decoration:none;color:var(--mute);white-space:nowrap;font-size:.85rem;min-height:44px;border-bottom:2px solid transparent}
+#links a.on{color:var(--wine);border-color:var(--gold)}
+#theme{background:none;border:0;color:var(--ink);width:44px;font-size:1.2rem}
+/* HERO */
+#genel{max-width:none;background:linear-gradient(160deg,#2b0f16,#4a2a22);color:#efe6d6;padding:4rem 1.2rem 3rem}
+#genel>div{max-width:960px;margin:auto}
+#genel h1{font-size:clamp(2.8rem,10vw,5.5rem);letter-spacing:.02em;color:#efe6d6}
+#genel .sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.5rem;color:#c9a96a}
+.stats{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.4rem 0}
+.stats div{border:1px solid #c9a96a66;border-radius:8px;padding:.5rem .9rem}
+.stats b{display:block;font-size:1.3rem}
+.btns{display:flex;gap:.7rem;flex-wrap:wrap}
+.btn{border:1px solid #c9a96a;background:#c9a96a;color:#2b0f16;padding:.6rem 1.2rem;border-radius:6px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center}
+.btn.alt{background:none;color:#efe6d6}
+#genel .kc{color:#d9c9a4;border-color:#c9a96a}
+/* CARDS */
+.grid{display:grid;gap:.8rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:1rem}
+table{width:100%;border-collapse:collapse;font-size:.9rem;margin-top:1rem}
+td,th{text-align:left;padding:.5rem;border-bottom:1px solid var(--line);vertical-align:top}
+/* WEATHER (sabit yükseklik: yüklenince sayfa kaymasın) */
+#wx{min-height:340px;align-content:start}
+#wx .card{min-height:200px}
+#wxnote{min-height:1.6em}
+.sk{opacity:.5}
+/* PROGRAM paneli sabit alan: gün değişince alttaki içerik zıplamasın */
+#panel{min-height:380px}
+/* ROUTE */
+.route{display:flex;flex-direction:column;gap:0;margin-top:1rem}
+.node{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:1rem;text-align:left;color:var(--ink);width:100%}
+.node.night{border:2px dashed var(--gold)}
+.node.off{border:2px dashed var(--terra)}
+.node h3{color:var(--wine);margin:0}
+.arrow{align-self:center;color:var(--gold);height:44px}
+@media(min-width:760px){.route{display:grid;grid-template-columns:1fr 1fr;gap:0 2.5rem}.route .node:nth-of-type(even){transform:translateY(2rem)}.arrow{display:none}.route{padding-bottom:2rem}}
+/* PROGRAM */
+[role=tablist]{display:flex;gap:.4rem;overflow-x:auto;margin:1rem 0}
+[role=tab]{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:0 1rem;white-space:nowrap}
+[role=tab][aria-selected=true]{background:var(--wine);color:var(--bg);border-color:var(--wine)}
+.tags span{display:inline-block;margin:.15rem .3rem .15rem 0;font-size:.85rem;border:1px solid var(--line);border-radius:20px;padding:0 .6rem}
+.tl{list-style:none;padding:0;margin:1rem 0;border-left:2px solid var(--gold)}
+.tl li{padding:.3rem 0 .3rem 1rem}.tl b{color:var(--terra)}
+/* FORMS */
+.form{display:grid;gap:.6rem;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+label{font-size:.85rem;color:var(--mute);display:block}
+input[type=number]{width:100%;min-height:44px;font:inherit;padding:.4rem;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:6px}
+.chk label{display:flex;gap:.7rem;align-items:center;min-height:44px;color:var(--ink);font-size:1rem}
+.chk input{width:22px;height:22px}
+#top{position:fixed;right:1rem;bottom:calc(1rem + env(safe-area-inset-bottom,0px));width:44px;border-radius:50%;border:1px solid var(--gold);background:var(--card);color:var(--ink);z-index:20;opacity:0;visibility:hidden;transition:opacity .2s,visibility .2s}
+#top.show{opacity:1;visibility:visible}
+footer{text-align:center;padding:2.5rem 1rem;border-top:1px solid var(--line)}
+/* PRINT */
+@media print{nav,#top,#prog,.btns{display:none}.card,.node{break-inside:avoid}[role=tabpanel][hidden]{display:block!important}#panel,#wx{min-height:0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}#top{transition:none}}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<nav aria-label="Ana menü"><div id="links"></div><button id="theme" aria-label="Koyu / açık mod">☾</button></nav>
+
+<header id="genel"><div>
+<h1>KADİM ROADBOOK</h1>
+<p class="sub">Erzurum'dan Mezopotamya'ya</p>
+<p>Mardin · Dara · Midyat · Diyarbakır</p>
+<p>Taş şehirlerden antik kentlere, manastırlardan surlara uzanan aile yolculuğu.</p>
+<div class="stats"><div><b>5</b>gün</div><div><b>4</b>ana durak</div><div><b>4</b>geceleme</div><div><b>Yaklaşık</b>rota<span class="kc">Kontrol edilmeli</span></div></div>
+<div class="btns"><a class="btn" href="#program" id="start">ROTAYI BAŞLAT →</a><a class="btn alt" href="#rota">YOLCULUĞU GÖR</a></div>
+</div></header>
+
+<section id="ozet" aria-label="Seyahat özeti">
+<div class="grid"><div class="card"><h3>Şu an</h3><p id="nowc"></p></div><div class="card"><h3>Sonra</h3><p id="nextc"></p></div><div class="card"><h3>Akşam</h3><p id="evec"></p></div></div>
+<div style="overflow-x:auto"><table><thead><tr><th>Gün</th><th>Bölge</th><th>Tempo</th><th>Geceleme</th></tr></thead><tbody id="sumtb"></tbody></table></div>
+</section>
+
+<section id="rota"><h2>Rota hikâyesi</h2>
+<p class="mute">Harita değil, zaman akışı. Bir durağa dokun; ilgili güne gidersin. Kesikli çerçeve geceleme, terracotta kesikli çerçeve kısıt dışı zorunlu gecelemedir.</p>
+<div class="route" id="routeBox"></div></section>
+
+<section id="neden"><h2>Neden bu rota?</h2>
+<div class="grid" id="whyBox"></div>
+<div class="card" style="margin-top:1rem"><h3>Pazar gecesi seçenekleri</h3><div id="sunOpts"></div></div>
+</section>
+
+<section id="program"><h2>Gün gün program</h2>
+<div role="tablist" aria-label="Günler" id="tabs"></div><div id="panel" role="tabpanel" tabindex="0"></div></section>
+
+<section id="mardin"><h2>Mardin</h2><p class="card"><b>İLK KEZ GELİYORSAN…</b> Eski kente arabayla girme; otelin yakınına park et, çarşı katını yürü, gün batımını teras ya da seyir noktasında karşıla.<span class="kc">Kontrol edilmeli</span></p><div class="grid" id="d-mardin"></div><p class="mute">Ne yenir? Bölgede yerel yemek aranmalı; işletme adı doğrulanmadığı için yazılmadı.</p></section>
+<section id="dara"><h2>Dara · Antik Kent Kaçamağı</h2><p class="card"><b>Ayrı rota:</b> Dara, Mardin merkezinden ayrı, araçlı bir çıkıştır; yürüyerek gidilmez. Sabah erken ziyaret önerilir (ışık, sıcaklık, gölge azlığı). Sıcak havada su ve şapka şart; çocukla açık alanda uzun kalma.<span class="kc">Kontrol edilmeli</span></p><div class="grid" id="d-dara"></div></section>
+<section id="midyat"><h2>Midyat ve ilçeler</h2><p class="card"><b>İLK KEZ GELİYORSAN…</b> Midyat Mardin'den daha yatay ve zanaat ritimli; sıcak sarı taş, telkari atölyeleri. Savur, Nusaybin, Kızıltepe, Derik ve Dargeçit yük dengesi için bilerek dışarıda bırakıldı.</p><div class="grid" id="d-midyat"></div></section>
+<section id="diyarbakir"><h2>Diyarbakır</h2><p class="card"><b>İLK KEZ GELİYORSAN…</b> Perşembe için en fazla 3 deneyim: Küme 1 surlar + Ulu Camii çevresi + hanlar/çarşı; Küme 2 Hevsel / On Gözlü Köprü (zaman kalırsa, araç gerekebilir).</p><div class="grid" id="d-diyar"></div></section>
+
+<section id="hava"><h2>Canlı hava</h2><div class="grid" id="wx"></div><p class="mute" id="wxnote"></p></section>
+
+<section id="butce"><h2>Bütçe hesaplayıcı</h2><p class="mute">Alanlar boş gelir; fiyatı sen girersin.</p>
+<div class="form" id="bform"></div>
+<div class="card" style="margin-top:1rem"><b>Toplam:</b> <span id="tot">0</span> ₺ · <b>Kişi başı:</b> <span id="pp">0</span> ₺</div></section>
+
+<section id="notlar"><h2>Pratik notlar</h2><ul id="notes"></ul>
+<h3 style="margin-top:1.5rem">Yola çıkmadan önce</h3><div class="chk card" id="chk"></div>
+<p class="mute">⭐ işaretleri editoryal önerilerdir; kullanıcı ya da Google puanı değildir.</p></section>
+
+<footer><h3>KADİM ROADBOOK</h3><p><i>Erzurum → Mardin → Dara → Midyat → Diyarbakır</i></p><p>Yolun kendisi de hikâyenin bir parçası.</p>
+<div class="btns" style="justify-content:center"><button class="btn" onclick="window.print()">Yazdır / PDF</button><a class="btn alt" style="color:var(--ink)" id="wa" target="_blank" rel="noopener">WhatsApp'ta paylaş</a></div></footer>
+<button id="top" aria-label="Yukarı çık">↑</button>
+
+<script>
+/* DATA */
+const KC='<span class="kc">Kontrol edilmeli</span>';
+const route=[
+ {id:'n0',t:'Erzurum',d:'Pazar 16:30 çıkış',x:['Güvenli molalar','Akşam sürüşü kısa'],day:0,sec:'program'},
+ {id:'n1',t:'Ara geceleme (Muş/Bitlis hattı)',d:'Kısıt dışı zorunlu geceleme',x:['Erken yatış','Sabah kolay çıkış'],day:0,sec:'program',cls:'off'},
+ {id:'n2',t:'Mardin',d:'Pazartesi–Salı',x:['Eski Mardin','Çarşı','Gün batımı'],day:1,sec:'mardin',cls:'night'},
+ {id:'n3',t:'Dara',d:'Salı sabah',x:['Antik kent','Su sarnıcı ve kaya mezarları'],day:2,sec:'dara'},
+ {id:'n4',t:'Midyat',d:'Çarşamba',x:['Eski Midyat','Telkari','Mor Gabriel'],day:3,sec:'midyat'},
+ {id:'n5',t:'Diyarbakır',d:'Çarşamba gecesi, Perşembe sabahı',x:['Surlar','Hanlar','Hevsel'],day:4,sec:'diyarbakir',cls:'night'},
+ {id:'n6',t:'Erzurum',d:'Perşembe öğle, doğrudan dönüş',x:['Yolda gezi yok'],day:4,sec:'program'}];
+const itinerary=[
+ {t:'Pazar',slogan:'Yola çıkış, gezi yok',reg:'Erzurum → ara nokta',tempo:'🟡 orta',drive:'orta',walk:'düşük',temp:'Akşam serin olabilir',aile:'Uyku saatine yakın erken mola',night:'Ara geceleme (kısıt dışı zorunlu)',now:'Erzurum, yola çıkış 16:30',next:'Güvenli mola ve ara geceleme',eve:'Erken yatış',rm:'Mola sayısı azaltılabilir',tl:[['16:30','Erzurum\'dan çıkış'],['Akşam','Yemek molası, yerel yemek aranmalı'],['Gece öncesi','Ara noktada konaklama'+KC]]},
+ {t:'Pazartesi',slogan:'Taş şehre varış',reg:'Ara nokta → Mardin',tempo:'🔴 yoğun',drive:'yüksek',walk:'düşük',temp:'Öğleden sonra sıcak olabilir',aile:'Uzun sürüş, sık mola',night:'Mardin',now:'Mardin yolunda',next:'Otele yerleşme',eve:'Eski Mardin gün batımı',rm:'Gün batımı yürüyüşü kısaltılabilir',tl:[['Sabah','Mardin\'e hareket (yaklaşık süre)'+KC],['Öğleden sonra','Varış, otel, dinlenme'],['Akşam','Hafif yürüyüş ve gün batımı']]},
+ {t:'Salı',slogan:'Antik kent ve çarşı',reg:'Dara + Mardin merkez',tempo:'🟡 orta',drive:'düşük',walk:'orta',temp:'Dara\'da sabah erken ziyaret',aile:'Açık alanda su ve gölge molası',night:'Mardin',now:'Mardin\'de kahvaltı',next:'Dara sabah, Mardin öğleden sonra',eve:'Çarşı ve yemek',rm:'Deyrulzafaran çıkarılabilir',tl:[['Sabah erken','Dara Antik Kenti (araçla)'+KC],['Öğle','Mardin\'e dönüş, dinlenme'],['İkindi','Deyrulzafaran Manastırı'+KC],['Akşam','Çarşı ve yerel yemek']]},
+ {t:'Çarşamba',slogan:'Midyat ve Diyarbakır\'a geçiş',reg:'Midyat → Diyarbakır',tempo:'🔴 yoğun',drive:'yüksek',walk:'orta',temp:'Öğlen sıcak',aile:'Sürüş uzun; Midyat\'ta gölgeli mola',night:'Diyarbakır',now:'Mardin\'den ayrılış',next:'Midyat, sonra Diyarbakır yolu',eve:'Diyarbakır otel ve akşam',rm:'Mor Gabriel çıkarılabilir',tl:[['Sabah','Eski Midyat ve telkari'],['Öğle','Mor Gabriel (zaman uygunsa)'+KC],['Öğleden sonra','Diyarbakır\'a sürüş (yaklaşık süre)'+KC],['Akşam','Otel, hafif akşam yemeği']]},
+ {t:'Perşembe',slogan:'Surlar ve eve dönüş',reg:'Diyarbakır → Erzurum',tempo:'🔴 yoğun',drive:'yüksek',walk:'orta',temp:'Sabah gezisi serin',aile:'Kısa küme, sonra uzun dönüş',night:'Dönüş; aynı gün varış gerçekçi olmayabilir'+KC+' Gerekirse yolda zorunlu geceleme (kısıt dışı).',now:'Diyarbakır sabah',next:'Öğle civarı Erzurum\'a hareket',eve:'Yolda',rm:'Küme 2 çıkarılabilir',tl:[['Sabah','Küme 1: Surlar, Ulu Camii çevresi, hanlar'],['Zaman kalırsa','Küme 2: Hevsel / On Gözlü Köprü'],['Öğle civarı','Doğrudan Erzurum\'a dönüş, yol üstü gezi yok']]}];
+const why=[
+ ['Dara ayrı','Sabah ışığı ve sıcaklık nedeniyle Dara Salı sabahına alındı; Mardin\'e uzaklık yaklaşık'+KC],
+ ['Yük dengesi','İlçelerden yalnız Midyat alındı; diğerleri Çarşamba sürüşünü şişirmemek için çıkarıldı.'],
+ ['Dinî eser payı','Deyrulzafaran, Mor Gabriel, Ulu Camii çevresi: toplam yaklaşık üçte birin altında, farklı günlerde.'],
+ ['Aile testi','Pazar ve Perşembe tam gezi günü değil; Salı en rahat gün.']];
+const sunday=[['Senaryo 1: doğrudan Mardin','Gece geç varış, çocuk uykusu zor; Pazartesi gezi potansiyeli yüksek. Alternatif.'],['Senaryo 2: ara geceleme (ÖNERİLEN)','Sürüş iki güne yayılır, erken varış, otel bolluğu; ancak kısıt dışı zorunlu geceleme.'],['Senaryo 3: kısa sürüş + çok erken çıkış','Daha az sürüş Pazar, ama sabah çok erken kalkış. Alternatif.']];
+const destinations={mardin:[
+ ['Eski Mardin sokakları','Taş mimari ve çarşı atmosferi','mimari','2–3 saat'+KC,'Yürüyüş ve merdiven var; araçsız gezilir',5],
+ ['Gün batımı seyir noktası','Ovaya bakan manzara','manzara','1 saat'+KC,'Akşam serin, çocuk için uygun',4],
+ ['Deyrulzafaran Manastırı','Kültürel miras niteliği baskın','dinî','1,5 saat'+KC,'Araç gerekir; açılış saati kontrol edilmeli',4]],
+ dara:[['Dara Antik Kenti','Antik kent kalıntıları','tarih','1,5–2 saat'+KC,'Araç gerekir; sıcakta gölge az',5]],
+ midyat:[['Eski Midyat','Sarı taş konaklar','mimari','2 saat'+KC,'Yatay ve rahat yürüyüş',5],['Telkari atölyeleri','Yaşayan zanaat','kültür','1 saat'+KC,'Çocuk için sakin',4],['Mor Gabriel Manastırı','Çok eski manastır','dinî','1 saat'+KC,'Açılış ve ziyaret kuralları kontrol edilmeli',4]],
+ diyar:[['Surlar','Uzun savunma duvarı','tarih','1–2 saat'+KC,'Kısa bir kesit yeterli',5],['Hanlar ve çarşı','Çarşı ve gastronomi','çarşı','1,5 saat'+KC,'Kalabalık, el ele gezilmeli',4],['Hevsel / On Gözlü Köprü','Nehir kıyısı manzara','manzara','1 saat'+KC,'Araç gerekebilir; zaman kalırsa',3],['Ulu Camii çevresi','Tarihî çekirdek','dinî','1 saat'+KC,'Surlar kümesiyle birlikte',3]]};
+const checklist=['Araç kontrolü','Telefon şarjı, powerbank','Çocuk ihtiyaçları','Konaklama rezervasyonları (Mardin, Diyarbakır, ara geceleme)','Kimlikler','Fotoğraf ekipmanı','Su ve atıştırmalık','Güneş koruması','Offline navigasyon'];
+const notes=['Yol: tüm süreler yaklaşık'+KC,'Sıcak: öğle saatlerinde açık alandan kaçın','Çocuk: sık mola, yedek kıyafet','Rezervasyon: doğrulanmamış her bilgi'+KC];
+const cities={Erzurum:[39.9055,41.2658],Mardin:[37.3212,40.7245],Dara:[37.1833,40.95],Midyat:[37.419,41.37],'Diyarbakır':[37.9144,40.2306]};
+const secs=[['genel','GENEL'],['rota','ROTA'],['program','PROGRAM'],['mardin','MARDİN'],['dara','DARA'],['midyat','MİDYAT'],['diyarbakir','DİYARBAKIR'],['hava','HAVA'],['butce','BÜTÇE'],['notlar','NOTLAR']];
+const $=s=>document.querySelector(s);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+/* ROUTE */
+function selectDay(i,sec){setDay(i);const el=document.getElementById(sec||'program');if(el)el.scrollIntoView({behavior:'smooth',block:'start'})}
+$('#routeBox').innerHTML=route.map((r,i)=>`<button class="node ${r.cls||''}" data-d="${r.day}" data-s="${r.sec}" aria-label="${r.t}, ${r.d}"><h3>${r.t}</h3><p class="mute">${r.d}</p><p>${r.x.join(' · ')}</p></button>`+(i<route.length-1?'<svg class="arrow" width="24" height="44" aria-hidden="true"><path d="M12 2v34M5 30l7 8 7-8" fill="none" stroke="currentColor" stroke-width="2"/></svg>':'')).join('');
+document.querySelectorAll('.node').forEach(b=>b.onclick=()=>selectDay(+b.dataset.d,b.dataset.s));
+$('#start').onclick=e=>{e.preventDefault();selectDay(0,'program')};
+$('#whyBox').innerHTML=why.map(w=>`<div class="card"><h3>${w[0]}</h3><p>${w[1]}</p></div>`).join('');
+$('#sunOpts').innerHTML=sunday.map(s=>`<p><b>${s[0]}</b><br>${s[1]}</p>`).join('')+'<p class="mute">Karşılaştırma ölçütleri: sürüş yükü, varış saati, çocuk uykusu, otel bolluğu, sabah çıkış, Pazartesi potansiyeli.</p>';
+/* ITINERARY */
+$('#sumtb').innerHTML=itinerary.map(d=>`<tr><td>${d.t}</td><td>${d.reg}</td><td>${d.tempo}</td><td>${d.night}</td></tr>`).join('');
+const tabs=$('#tabs');
+tabs.innerHTML=itinerary.map((d,i)=>`<button role="tab" id="tab${i}" aria-controls="panel" aria-selected="false" tabindex="-1">Gün ${i+1}</button>`).join('');
+function setDay(i){const d=itinerary[i];
+ tabs.querySelectorAll('[role=tab]').forEach((t,j)=>{t.setAttribute('aria-selected',j===i);t.tabIndex=j===i?0:-1});
+ $('#panel').setAttribute('aria-labelledby','tab'+i);
+ $('#panel').innerHTML=`<div class="card"><h3>${d.t}: ${d.slogan}</h3><div class="tags"><span>🚗 ${d.drive}</span><span>🥾 ${d.walk}</span><span>🌡 ${d.temp}</span><span>👨‍👩‍👧 ${d.aile}</span><span>${d.tempo}</span></div><ul class="tl">${d.tl.map(x=>`<li><b>${x[0]}</b> ${x[1]}</li>`).join('')}</ul><p><b>Geceleme:</b> ${d.night}</p><p class="mute">Yorgunsa çıkarılabilecek durak: ${d.rm}. Saatler öneridir.</p></div>`;
+ $('#nowc').textContent=d.now;$('#nextc').textContent=d.next;$('#evec').textContent=d.eve}
+tabs.querySelectorAll('[role=tab]').forEach((t,i)=>{t.onclick=()=>setDay(i);t.onkeydown=e=>{let n=i;if(e.key==='ArrowRight')n=(i+1)%5;else if(e.key==='ArrowLeft')n=(i+4)%5;else return;e.preventDefault();setDay(n);tabs.children[n].focus({preventScroll:true})}});
+setDay(0);
+/* DESTINATIONS */
+const mapsUrl=q=>'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q);
+Object.keys(destinations).forEach(k=>{$('#d-'+k).innerHTML=destinations[k].map(d=>`<div class="card"><h3>${d[0]}</h3><p>${d[1]}</p><p class="mute">⏱ ${d[3]}<br>👨‍👩‍👧 ${d[4]}<br>⭐ ${d[5]}/5 (editoryal) · ${d[2]}</p><a href="${mapsUrl(d[0])}" target="_blank" rel="noopener">Google Maps'te Aç</a></div>`).join('')});
+/* UI */
+const linksEl=$('#links');
+linksEl.innerHTML=secs.map(s=>`<a href="#${s[0]}" data-s="${s[0]}">${s[1]}</a>`).join('');
+/* Aktif menü: scrollIntoView YOK (sayfayı kaydırıp titretiyordu); yalnızca menü şeridi yatay kaydırılır */
+let activeId=null;
+function setActive(id){
+ if(id===activeId)return;activeId=id;
+ linksEl.querySelectorAll('a').forEach(a=>{
+  const on=a.dataset.s===id;a.classList.toggle('on',on);
+  if(on){const lr=linksEl.getBoundingClientRect(),ar=a.getBoundingClientRect();
+   const target=linksEl.scrollLeft+(ar.left-lr.left)-(lr.width-ar.width)/2;
+   linksEl.scrollTo({left:Math.max(0,target),behavior:'auto'})}
+ })}
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)setActive(e.target.id)})},{rootMargin:'-40% 0px -55% 0px'});
+secs.forEach(s=>{const el=document.getElementById(s[0]);if(el)io.observe(el)});
+setActive('genel');
+/* Kaydırma: rAF ile tek seferde, yalnızca transform/class (yerleşimi etkilemez) */
+let ticking=false;
+function onScroll(){ticking=false;const h=document.documentElement;
+ const max=h.scrollHeight-h.clientHeight;
+ $('#prog').style.transform='scaleX('+(max>0?Math.min(1,Math.max(0,h.scrollTop/max)):0)+')';
+ $('#top').classList.toggle('show',h.scrollTop>600)}
+addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(onScroll)}},{passive:true});
+onScroll();
+$('#top').onclick=()=>scrollTo({top:0,behavior:'smooth'});
+$('#wa').href='https://wa.me/?text='+encodeURIComponent('KADİM Roadbook: Erzurum → Mardin → Dara → Midyat → Diyarbakır');
+/* THEME */
+function applyTheme(t){document.documentElement.dataset.theme=t;$('#theme').textContent=t==='dark'?'☀':'☾'}
+applyTheme(store.get('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'));
+$('#theme').onclick=()=>{const t=document.documentElement.dataset.theme==='dark'?'light':'dark';applyTheme(t);store.set('theme',t)};
+/* CHECKLIST */
+let done={};try{done=JSON.parse(store.get('chk')||'{}')}catch(e){}
+$('#chk').innerHTML=checklist.map((c,i)=>`<label><input type="checkbox" data-i="${i}" ${done[i]?'checked':''}>${c}</label>`).join('');
+document.querySelectorAll('#chk input').forEach(c=>c.onchange=()=>{done[c.dataset.i]=c.checked;store.set('chk',JSON.stringify(done))});
+$('#notes').innerHTML=notes.map(n=>`<li>${n}</li>`).join('');
+/* BUDGET */
+const bf=[['fuel','Toplam yakıt'],['ppl','Kişi sayısı'],['nights','Gece sayısı'],['hotel','Gecelik konaklama'],['meal','Kişi başı günlük yemek'],['days','Gün sayısı'],['entry','Kişi başı giriş'],['park','Otopark']];
+let bv={};try{bv=JSON.parse(store.get('bud')||'{}')}catch(e){}
+$('#bform').innerHTML=bf.map(f=>`<div><label for="b_${f[0]}">${f[1]}</label><input type="number" min="0" id="b_${f[0]}" inputmode="decimal" value="${bv[f[0]]??''}"></div>`).join('');
+function calc(){const v={};bf.forEach(f=>{const n=parseFloat($('#b_'+f[0]).value);v[f[0]]=isFinite(n)&&n>0?n:0;});
+ const ppl=v.ppl||0,t=v.fuel+v.nights*v.hotel+ppl*v.meal*v.days+ppl*v.entry+v.park;
+ $('#tot').textContent=Math.round(t).toLocaleString('tr-TR');$('#pp').textContent=ppl?Math.round(t/ppl).toLocaleString('tr-TR'):'0';
+ const raw={};bf.forEach(f=>raw[f[0]]=$('#b_'+f[0]).value);store.set('bud',JSON.stringify(raw))}
+bf.forEach(f=>$('#b_'+f[0]).oninput=calc);calc();
+/* WEATHER: yer tutucu kartlar aynı yükseklikte, veri gelince sayfa zıplamaz */
+const wxBox=$('#wx');
+wxBox.innerHTML=Object.keys(cities).map(n=>`<div class="card sk"><h3>${n}</h3><p class="mute">Yükleniyor…</p></div>`).join('');
+async function weather(){
+ try{const names=Object.keys(cities);
+  const res=await Promise.all(names.map(async n=>{const c=new AbortController(),to=setTimeout(()=>c.abort(),8000);
+   try{const r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${cities[n][0]}&longitude=${cities[n][1]}&current=temperature_2m&daily=temperature_2m_max,temperature_2m_min&forecast_days=5&timezone=auto`,{signal:c.signal});
+    if(!r.ok)throw new Error(r.status);const j=await r.json();if(!j.current||!j.daily)throw new Error('empty');return[n,j]}finally{clearTimeout(to)}}));
+  wxBox.innerHTML=res.map(([n,j])=>`<div class="card"><h3>${n}</h3><p><b>${Math.round(j.current.temperature_2m)}°C</b> şu an</p><p class="mute">${j.daily.time.map((d,i)=>`${d.slice(5)}: ${Math.round(j.daily.temperature_2m_min[i])}/${Math.round(j.daily.temperature_2m_max[i])}°`).join('<br>')}</p></div>`).join('')}
+ catch(e){wxBox.querySelectorAll('.card p').forEach(p=>p.textContent='Alınamadı');$('#wxnote').textContent='Hava durumu şu an alınamadı (bağlantı ya da servis sorunu). Sayfanın geri kalanı etkilenmez; sonra yenile.'}}
+weather();
+</script>
+</body>
+</html>
