@@ -59,13 +59,34 @@ td,th{text-align:left;padding:.5rem;border-bottom:1px solid var(--line);vertical
 /* PROGRAM paneli sabit alan: gün değişince alttaki içerik zıplamasın */
 #panel{min-height:380px}
 /* ROUTE */
-.route{display:flex;flex-direction:column;gap:0;margin-top:1rem}
-.node{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:1rem;text-align:left;color:var(--ink);width:100%}
-.node.night{border:2px dashed var(--gold)}
-.node.off{border:2px dashed var(--terra)}
-.node h3{color:var(--wine);margin:0}
-.arrow{align-self:center;color:var(--gold);height:44px}
-@media(min-width:760px){.route{display:grid;grid-template-columns:1fr 1fr;gap:0 2.5rem}.route .node:nth-of-type(even){transform:translateY(2rem)}.arrow{display:none}.route{padding-bottom:2rem}}
+.lead{border-left:4px solid var(--gold);margin-top:1rem}
+.lead .who{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--terra);font-weight:600;margin-bottom:.4rem}
+.lead p{margin:.55rem 0}
+.rwrap{display:grid;gap:1.5rem;margin-top:1.5rem}
+@media(min-width:760px){.rwrap{grid-template-columns:minmax(240px,300px) 1fr;align-items:start}}
+.stp{position:relative;display:block;width:100%;text-align:left;background:none;border:0;color:var(--ink);padding:.2rem .4rem 1.1rem 3rem;min-height:44px}
+.stp .n{position:absolute;left:0;top:.2rem;width:32px;height:32px;border-radius:50%;border:2px solid var(--gold);display:grid;place-items:center;font-size:.8rem;background:var(--bg);color:var(--ink)}
+.stp.off .n{border:2px dashed var(--terra)}
+.stp:not(:last-child)::after{content:'';position:absolute;left:15px;top:2.4rem;bottom:.1rem;width:2px;background:var(--line)}
+.stp h3{margin:0;font-size:1.25rem}
+.stp p{margin:0;font-size:.85rem}
+.stp.on .n{background:var(--gold);color:#231a1b;border-style:solid}
+.stp.on h3{color:var(--wine)}
+.mapbox{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:.5rem;overflow:hidden}
+#mapSvg{display:block;width:100%;height:auto;max-width:440px;margin:0 auto}
+#mapSvg .lbl{font:600 13px Manrope,system-ui,sans-serif;fill:var(--ink);paint-order:stroke;stroke:var(--card);stroke-width:4px;stroke-linejoin:round}
+#mapSvg .mk{cursor:pointer;outline:none}
+#mapSvg .mk .d{fill:var(--terra)}
+#mapSvg .mk .r{fill:var(--gold);opacity:0;transition:opacity .2s}
+#mapSvg .mk.on .d{fill:var(--gold);stroke:var(--wine);stroke-width:2}
+#mapSvg .mk.on .r{opacity:.35}
+#mapSvg .mk:focus-visible .r{opacity:.5}
+#mapSvg .flow{animation:dash 3s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-24}}
+.stopdet{min-height:190px;margin-top:1.5rem}
+.stopdet h3{color:var(--wine)}
+.stopdet .btn{margin-top:.6rem}
+@media(prefers-reduced-motion:reduce){#mapSvg .flow{animation:none}}
 /* PROGRAM */
 [role=tablist]{display:flex;gap:.4rem;overflow-x:auto;margin:1rem 0}
 [role=tab]{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:0 1rem;white-space:nowrap}
@@ -106,8 +127,15 @@ footer{text-align:center;padding:2.5rem 1rem;border-top:1px solid var(--line)}
 </section>
 
 <section id="rota"><h2>Rota hikâyesi</h2>
-<p class="mute">Harita değil, zaman akışı. Bir durağa dokun; ilgili güne gidersin. Kesikli çerçeve geceleme, terracotta kesikli çerçeve kısıt dışı zorunlu gecelemedir.</p>
-<div class="route" id="routeBox"></div></section>
+<div class="card lead"><div class="who">Grup liderinden iki çift laf</div>
+<p>Selam yol arkadaşlarım! 👋 Bu rotayı hazırlarken tek bir derdim vardı: hem doya doya gezelim hem de çocuklar arka koltuktan "daha kaç saat var?" diye bizi sorguya çekmesin.</p>
+<p>Pazar günü 16:30'da Erzurum'dan çıkıyoruz. O akşam gezi yok, sadece yol var. Muş–Bitlis hattında erkenden bir yere yatacağız. Evet, bu zorunlu bir geceleme ve kısıtlarımızın dışında kalıyor, ama sabaha ferah çıkmamızı sağlayan akıllı bir mola. Pazartesi Mardin'e varıyoruz: taş sokaklarda yavaş bir yürüyüş, gün batımında da ovaya bakan bir mola. O günün işi dinlenmek ve şehre ısınmak.</p>
+<p>Salı en rahat günümüz. Dara'ya güneş yükselmeden gidiyoruz çünkü orası sıcakta gölgesiz kalıyor. Öğlen Mardin'e dönüp dinleniyor, akşam çarşıda yerel bir şeyler yiyoruz. Çarşamba Midyat'ın sarı taşları ve telkari atölyeleri, zaman olursa Mor Gabriel, sonra Diyarbakır'a geçiş. Perşembe sabahı surlar ve hanlar, öğle civarı da doğrudan eve doğru yola çıkıyoruz.</p>
+<p>Yorulan ya da canı sıkılan olursa programdan durak çıkarmak serbest; her günün altına "çıkarılabilir" notunu düştüm. Perşembe günü aynı gün Erzurum'a varmak zor olabilir, gerekirse yolda bir gece daha yatarız. Süreleri yaklaşık yazdım, yola çıkmadan hep birlikte teyit ederiz. Hazırsanız yola!<span class="kc">Kontrol edilmeli</span></p></div>
+<p class="mute" style="margin-top:1rem">Bir durağa dokun: haritada yanar, altta detayı açılır. Terracotta kesikli daire, kısıt dışı zorunlu gecelemedir.</p>
+<div class="rwrap"><div id="stepBox"></div>
+<div class="mapbox"><svg id="mapSvg" viewBox="0 0 380 590" role="group" aria-label="Rota haritası, ölçekli değil"></svg><p class="mute" style="text-align:center;font-size:.8rem;margin:.2rem 0 .4rem">Şematik harita, konumlar yaklaşık<span class="kc">Kontrol edilmeli</span></p></div></div>
+<div class="card stopdet" id="stopDet" aria-live="polite"></div></section>
 
 <section id="neden"><h2>Neden bu rota?</h2>
 <div class="grid" id="whyBox"></div>
@@ -174,9 +202,33 @@ const $=s=>document.querySelector(s);
 const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
 /* ROUTE */
 function selectDay(i,sec){setDay(i);const el=document.getElementById(sec||'program');if(el)el.scrollIntoView({behavior:'smooth',block:'start'})}
-$('#routeBox').innerHTML=route.map((r,i)=>`<button class="node ${r.cls||''}" data-d="${r.day}" data-s="${r.sec}" aria-label="${r.t}, ${r.d}"><h3>${r.t}</h3><p class="mute">${r.d}</p><p>${r.x.join(' · ')}</p></button>`+(i<route.length-1?'<svg class="arrow" width="24" height="44" aria-hidden="true"><path d="M12 2v34M5 30l7 8 7-8" fill="none" stroke="currentColor" stroke-width="2"/></svg>':'')).join('');
-document.querySelectorAll('.node').forEach(b=>b.onclick=()=>selectDay(+b.dataset.d,b.dataset.s));
 $('#start').onclick=e=>{e.preventDefault();selectDay(0,'program')};
+const PX=(lat,lon)=>[Math.round(40+(lon-39.9)*134),Math.round(40+(40.0-lat)*170)];
+const P={erz:PX(...cities.Erzurum),ara:PX(38.6,41.8),mar:PX(...cities.Mardin),dara:PX(...cities.Dara),mid:PX(...cities.Midyat),diy:PX(...cities['Diyarbakır'])};
+const PL={erz:['Erzurum',-8,-16,'middle'],ara:['Ara geceleme',12,4,'start'],mar:['Mardin',-12,4,'end'],dara:['Dara',12,16,'start'],mid:['Midyat',12,4,'start'],diy:['Diyarbakır',-12,4,'end']};
+const plOf=['erz','ara','mar','dara','mid','diy','erz'];
+function smoothPath(pts){const k=7;let d='M'+pts[0].join(',');
+ for(let i=0;i<pts.length-1;i++){const p0=pts[i-1]||pts[i],p1=pts[i],p2=pts[i+1],p3=pts[i+2]||p2;
+  d+=` C${p1[0]+(p2[0]-p0[0])/k},${p1[1]+(p2[1]-p0[1])/k} ${p2[0]-(p3[0]-p1[0])/k},${p2[1]-(p3[1]-p1[1])/k} ${p2[0]},${p2[1]}`}
+ return d}
+const outPath=smoothPath([P.erz,P.ara,P.mar,P.dara,P.mid,P.diy]);
+const backPath=`M${P.diy[0]},${P.diy[1]} Q${P.diy[0]-50},${Math.round((P.diy[1]+P.erz[1])/2)} ${P.erz[0]},${P.erz[1]}`;
+$('#mapSvg').innerHTML=`<path d="M0 150 C100 130 240 175 380 140" fill="none" stroke="var(--line)" stroke-width="1.5" opacity=".7"/><path d="M0 330 C120 310 250 350 380 320" fill="none" stroke="var(--line)" stroke-width="1.5" opacity=".7"/><path d="M0 520 C110 505 250 540 380 515" fill="none" stroke="var(--line)" stroke-width="1.5" opacity=".7"/>`
+ +`<path d="${backPath}" fill="none" stroke="var(--terra)" stroke-width="2.5" stroke-dasharray="3 9" stroke-linecap="round" opacity=".8"/>`
+ +`<path class="flow" d="${outPath}" fill="none" stroke="var(--gold)" stroke-width="3" stroke-dasharray="8 6" stroke-linecap="round"/>`
+ +Object.keys(P).map(k=>{const [x,y]=P[k],l=PL[k];
+  return `<g class="mk" data-p="${k}" tabindex="0" role="button" aria-label="${l[0]}"><circle cx="${x}" cy="${y}" r="24" fill="transparent"/><circle class="r" cx="${x}" cy="${y}" r="16"/><circle class="d" cx="${x}" cy="${y}" r="7"/><text class="lbl" x="${x+l[1]}" y="${y+l[2]}" text-anchor="${l[3]}">${l[0]}</text></g>`}).join('');
+$('#stepBox').innerHTML=route.map((r,i)=>`<button class="stp ${r.cls==='off'?'off':''}" data-i="${i}"><span class="n">${i+1}</span><h3>${r.t}</h3><p class="mute">${r.d}</p></button>`).join('');
+let curStop=-1;
+function selStop(i){curStop=i;const r=route[i];
+ document.querySelectorAll('.stp').forEach((b,j)=>b.classList.toggle('on',j===i));
+ document.querySelectorAll('#mapSvg .mk').forEach(g=>g.classList.toggle('on',g.dataset.p===plOf[i]));
+ $('#stopDet').innerHTML=`<h3>${i+1}. ${r.t}</h3><p class="mute">${r.d}</p><p>${r.x.join(' · ')}</p><p class="mute">Aile notu: ${itinerary[r.day].aile}.</p><button class="btn" id="goDay">Bu günün programına git →</button>`;
+ $('#goDay').onclick=()=>selectDay(r.day,r.sec)}
+document.querySelectorAll('.stp').forEach(b=>b.onclick=()=>selStop(+b.dataset.i));
+document.querySelectorAll('#mapSvg .mk').forEach(g=>{const pick=()=>{let i=plOf.indexOf(g.dataset.p);if(g.dataset.p==='erz'&&curStop===0)i=6;selStop(i)};
+ g.onclick=pick;g.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick()}}});
+selStop(0);
 $('#whyBox').innerHTML=why.map(w=>`<div class="card"><h3>${w[0]}</h3><p>${w[1]}</p></div>`).join('');
 $('#sunOpts').innerHTML=sunday.map(s=>`<p><b>${s[0]}</b><br>${s[1]}</p>`).join('')+'<p class="mute">Karşılaştırma ölçütleri: sürüş yükü, varış saati, çocuk uykusu, otel bolluğu, sabah çıkış, Pazartesi potansiyeli.</p>';
 /* ITINERARY */
